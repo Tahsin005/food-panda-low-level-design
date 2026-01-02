@@ -53,48 +53,8 @@ FoodPanda/
 
 ## Class Diagram
 
-```mermaid
-classDiagram
-    class FoodPanda {
-        +searchRestaurants(location)
-        +addToCart(user, itemCode)
-        +checkoutNow(user, type, payment)
-        +payForOrder(user, order)
-    }
-    class User {
-        +getName()
-        +getCart()
-    }
-    class Restaurant {
-        +getName()
-        +getMenu()
-    }
-    class Order {
-        <<abstract>>
-        +processPayment()
-        +getType()*
-    }
-    class PaymentStrategy {
-        <<interface>>
-        +pay(amount)*
-    }
-    class OrderFactory {
-        <<abstract>>
-        +createOrder()*
-    }
+![Class Diagram](UML.png)
 
-    FoodPanda ..> RestaurantManager
-    FoodPanda ..> OrderManager
-    FoodPanda ..> OrderFactory
-    User "1" *-- "1" Cart
-    Cart "1" o-- "*" MenuItem
-    Order "1" o-- "*" MenuItem
-    Order o-- PaymentStrategy
-    DeliveryOrder --|> Order
-    PickupOrder --|> Order
-    BkashPaymentStrategy --|> PaymentStrategy
-    NowOrderFactory --|> OrderFactory
-```
 
 ## How to Run
 
